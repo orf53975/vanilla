@@ -495,7 +495,7 @@ class Addon {
      */
     private function scanClassPaths() {
         $dirs = [
-            '',
+            '/',
             '/[Cc]ontrollers',
             '/library',
             '/src',
