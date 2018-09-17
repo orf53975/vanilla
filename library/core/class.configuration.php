@@ -14,7 +14,7 @@
  * retrieve settings from the arrays, assign new values to the arrays, and save
  * the arrays back to the files.
  */
-class Gdn_Configuration extends Gdn_Pluggable {
+class Gdn_Configuration extends Vanilla\Legacy\Pluggable {
 
     /** Cache key format. */
     const CONFIG_FILE_CACHE_KEY = 'garden.config.%s';
@@ -918,7 +918,7 @@ function &arrayMergeRecursiveDistinct(array &$array1, &$array2 = null) {
 /**
  * Class Gdn_ConfigurationSource
  */
-class Gdn_ConfigurationSource extends Gdn_Pluggable {
+class Gdn_ConfigurationSource extends Vanilla\Legacy\Pluggable {
 
     /** @var Gdn_Configuration Top level configuration object to reference. */
     protected $Configuration;

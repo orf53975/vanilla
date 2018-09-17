@@ -15,7 +15,7 @@
  *
  * Helps with the rendering of form controls that link directly to a data model.
  */
-class Gdn_Form extends Gdn_Pluggable {
+class Gdn_Form extends \Vanilla\Legacy\Pluggable {
     /**
      * @var array
      */

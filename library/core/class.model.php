@@ -16,7 +16,7 @@
  * represent) and used directly, or it can be extended and overridden for more
  * complicated procedures related to different tables.
  */
-class Gdn_Model extends Gdn_Pluggable {
+class Gdn_Model extends Vanilla\Legacy\Pluggable {
 
     /**  @var Gdn_DataSet An object representation of the current working dataset. */
     public $Data;

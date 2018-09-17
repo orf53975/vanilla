@@ -14,7 +14,7 @@
 /**
  * Handles install-side analytics gathering and sending.
  */
-class Gdn_Statistics extends Gdn_Pluggable {
+class Gdn_Statistics extends Vanilla\Legacy\Pluggable {
     /** @var mixed  */
     protected $AnalyticsServer;
 

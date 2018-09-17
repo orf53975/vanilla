@@ -19,7 +19,7 @@
  *
  * @method void render($view = '', $controllerName = false, $applicationFolder = false, $assetName = 'Content') Render the controller's view.
  */
-class Gdn_Controller extends Gdn_Pluggable {
+class Gdn_Controller extends Vanilla\Legacy\Pluggable {
     use \Garden\MetaTrait, \Vanilla\Browser\ReduxTrait;
 
 
@@ -568,9 +568,9 @@ class Gdn_Controller extends Gdn_Pluggable {
 
         if (!array_key_exists('ResolvedArgs', $this->_Definitions)) {
             if (sizeof($this->ReflectArgs) && (
-                    (isset($this->ReflectArgs[0]) && $this->ReflectArgs[0] instanceof Gdn_Pluggable) ||
-                    (isset($this->ReflectArgs['Sender']) && $this->ReflectArgs['Sender'] instanceof Gdn_Pluggable) ||
-                    (isset($this->ReflectArgs['sender']) && $this->ReflectArgs['sender'] instanceof Gdn_Pluggable)
+                    (isset($this->ReflectArgs[0]) && $this->ReflectArgs[0] instanceof Vanilla\Legacy\Pluggable) ||
+                    (isset($this->ReflectArgs['Sender']) && $this->ReflectArgs['Sender'] instanceof Vanilla\Legacy\Pluggable) ||
+                    (isset($this->ReflectArgs['sender']) && $this->ReflectArgs['sender'] instanceof Vanilla\Legacy\Pluggable)
                 )
             ) {
                 $reflectArgs = array_slice($this->ReflectArgs, 1);

@@ -26,7 +26,8 @@ class AliasLoader {
      */
     protected static function provideAliases(): array {
         return [
-            Legacy\Factory::class => [\Gdn_Factory::class]
+            Legacy\Factory::class => [\Gdn_Factory::class],
+            Legacy\Pluggable::class => [\Gdn_Pluggable::class],
         ];
     }
 }

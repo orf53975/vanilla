@@ -1,6 +1,6 @@
 <?php
 /**
- * Gdn_Pluggable
+ * Vanilla\Legacy\Pluggable
  *
  * @author Mark O'Sullivan <markm@vanillaforums.com>
  * @copyright 2009-2018 Vanilla Forums Inc.
@@ -8,6 +8,13 @@
  * @package Core
  * @since 2.0
  */
+
+namespace Vanilla\Legacy;
+
+use Gdn;
+use ArgumentCountError;
+use Logger;
+use Vanilla\AliasLoader;
 
 /**
  * Event Framework: Pluggable
@@ -19,7 +26,7 @@
  *
  * @abstract
  */
-abstract class Gdn_Pluggable {
+abstract class Pluggable {
 
     /**
      * @var string The name of the class that has been instantiated. Typically this will be
@@ -52,7 +59,7 @@ abstract class Gdn_Pluggable {
 
 
     /**
-     * @var enumerator An enumerator indicating what type of handler the method being called is.
+     * @var string An enumerator indicating what type of handler the method being called is.
      * Options are:
      *  HANDLER_TYPE_NORMAL: Standard call to a method on the object (DEFAULT).
      *  HANDLER_TYPE_OVERRIDE: Call to a method override.
@@ -80,11 +87,11 @@ abstract class Gdn_Pluggable {
     }
 
     /**
+     * Get the return value from a an event.
      *
-     *
-     * @param string $pluginName
-     * @param string $handlerName
-     * @return
+     * @param string $pluginName The plugin that handled the event.
+     * @param string $handlerName The name of the handler.
+     * @return mixed The return value from the event.
      */
     public function getReturn($pluginName, $handlerName) {
         return $this->Returns[strtolower($handlerName)][strtolower($pluginName)];
@@ -94,6 +101,8 @@ abstract class Gdn_Pluggable {
      * Fire the next event off a custom parent class
      *
      * @param mixed $options Either the parent class, or an option array
+     *
+     * @return $this This for fluent chaining.
      */
     public function fireAs($options) {
         if (!is_array($options)) {
@@ -111,11 +120,15 @@ abstract class Gdn_Pluggable {
      *  public function senderClassName_EventName_Handler($Sender) {}
      *
      * @param string $eventName The name of the event being fired.
+     * @param array $arguments Arguments to merge with $this->EventArguments and pass into the handler.
+     *
+     * @return bool Returns **true** if an event was executed.
+     * @throws \Exception If this method was called without Vanilla\Legacy\Pluggable::__construct() being called.
      */
     public function fireEvent($eventName, $arguments = null) {
         if (!$this->ClassName) {
             $realClassName = get_class($this);
-            throw new Exception("Event fired from pluggable class '{$realClassName}', but Gdn_Pluggable::__construct() was never called.");
+            throw new \Exception("Event fired from pluggable class '{$realClassName}', but Vanilla\Legacy\Pluggable::__construct() was never called.");
         }
 
         $fireClass = !is_null($this->FireAs) ? $this->FireAs : $this->ClassName;
@@ -129,11 +142,11 @@ abstract class Gdn_Pluggable {
         // Look to the PluginManager to see if there are related event handlers and call them
         try {
             return Gdn::pluginManager()->callEventHandlers($this, $fireClass, $eventName);
-        } catch (ArgumentCountError $ex) {
+        } catch (\ArgumentCountError $ex) {
             if (debug()) {
                 throw $ex;
             }
-            Logger::event('arg_error', Logger::CRITICAL, $ex->getMessage());
+            \Logger::event('arg_error', Logger::CRITICAL, $ex->getMessage());
             return false;
         }
     }
@@ -158,7 +171,7 @@ abstract class Gdn_Pluggable {
      * @param string $methodName
      * @param array $arguments
      * @return mixed
-     *
+     * @throws \Exception If slicing methods are called.
      */
     public function __call($methodName, $arguments) {
         // Define a return variable.
@@ -169,9 +182,9 @@ abstract class Gdn_Pluggable {
         $sliceProviderMethods = ['enableSlicing', 'slice', 'addSliceAsset', 'renderSliceConfig'];
 
         if (in_array($methodName, $sliceProviderMethods)) {
-            $message = 'Slicing has been removed from Gdn_Pluggable.';
+            $message = 'Slicing has been removed from Vanilla\Legacy\Pluggable.';
             $message .= ' Try using the functionality provided by "js-form" instead.';
-            throw new Exception($message);
+            throw new \Exception($message);
         }
 
 
@@ -252,3 +265,5 @@ abstract class Gdn_Pluggable {
         return $return;
     }
 }
+
+AliasLoader::createAliases(Pluggable::class);

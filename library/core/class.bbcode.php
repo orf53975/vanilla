@@ -1,7 +1,7 @@
 <?php
 use Nbbc\BBCode as Nbbc;
 
-class BBCode extends Gdn_Pluggable {
+class BBCode extends Vanilla\Legacy\Pluggable {
 
     /**
      * @var array A list of records from the Media table, indexed by MediaID.
