@@ -53,7 +53,7 @@ export default class DateInput extends React.PureComponent<IProps, IState> {
      * Render a react day picker component.
      */
     private renderReactInput() {
-        const value = this.props.value ? new Date(this.props.value) : undefined;
+        const value = this.props.value ? this.normalizeDate(this.props.value) : undefined;
         return (
             <DayPickerInput
                 format="YYYY-MM-DD"
@@ -62,8 +62,7 @@ export default class DateInput extends React.PureComponent<IProps, IState> {
                 parseDate={parseDate}
                 value={value}
                 overlayComponent={this.CustomOverlay}
-                onDayChange={this.handleDateChange}
-                onChange={this.handleTextChange}
+                onDayChange={this.handleDayPickerChange}
                 dayPickerProps={{
                     captionElement: NullComponent,
                     navbarElement: this.CustomNavBar,
@@ -77,6 +76,7 @@ export default class DateInput extends React.PureComponent<IProps, IState> {
                     "aria-label": t("Date Input ") + "(yyyy-mm-dd)",
                     onBlur: this.handleBlur,
                     onFocus: this.handleFocus,
+                    onChange: this.handleNativeInputChange,
                 }}
             />
         );
@@ -87,7 +87,7 @@ export default class DateInput extends React.PureComponent<IProps, IState> {
      */
     private renderNativeInput() {
         // The native date input MUST have it's value in short ISO format, even it doesn't display that way.
-        const value = this.props.value ? this.props.value.substr(0, 10) : "";
+        const value = this.props.value ? this.normalizeIsoString(this.props.value) : "";
         return (
             <input
                 className="inputText"
@@ -102,16 +102,34 @@ export default class DateInput extends React.PureComponent<IProps, IState> {
     /**
      * Handle a new date.
      */
-    private handleDateChange = (date?: Date | null) => {
+    private updateDate = (date?: Date | null, isEmpty: boolean = false) => {
+        console.log("Date changed", date, isEmpty);
         if (date) {
             this.setState({ hasBadValue: false });
-            this.props.onChange(date.toISOString());
-        } else {
+            this.props.onChange(this.normalizeIsoString(date.toISOString()));
+        } else if (!isEmpty) {
             // invalid date
             this.setState({ hasBadValue: true });
             this.props.onChange("");
+        } else {
+            this.setState({ hasBadValue: false });
+            this.props.onChange("");
         }
     };
+
+    /**
+     * Ensure that our date string is always the day only form of an ISO date. EG. No time.
+     */
+    private normalizeIsoString(isoDate: string): string {
+        return isoDate.substr(0, 10);
+    }
+
+    private normalizeDate(isoDate: string): Date {
+        if (isoDate.length === 10) {
+            isoDate += "T00:00:00.000Z";
+        }
+        return new Date(isoDate);
+    }
 
     /**
      * Track blurred state.
@@ -128,18 +146,31 @@ export default class DateInput extends React.PureComponent<IProps, IState> {
     };
 
     /**
+     * Handle changes in the day picker input. Eg. A day selection in the modal.
+     *
+     * Other changes will call the handleTextChange event.
+     */
+    private handleDayPickerChange = (date?: Date | null) => {
+        if (date) {
+            this.updateDate(date);
+        }
+    };
+
+    /**
      * Handle text changes in the main input.
      */
     private handleTextChange = (event: React.ChangeEvent<any>) => {
+        const { value } = event.target.value;
         const date = new Date(event.target.value);
-        this.handleDateChange(date);
+        this.updateDate(date, value === "");
     };
 
     /**
      * Handle changes in the native input.
      */
     private handleNativeInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.handleDateChange(event.target.valueAsDate);
+        console.log(event);
+        this.updateDate(event.target.valueAsDate, event.target.value === "");
     };
 
     /**
