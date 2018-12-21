@@ -52,11 +52,6 @@ $siteNav-node_padding               : $utility-baseUnit - $siteNav-node_borderWi
     flex-wrap: nowrap;
     font-size: $siteNav-node_fontSize;
     color: $siteNav-node_color;
-
-    &.isCurrent {
-        color: $siteNav-node_active_color;
-        font-weight: $global-fontWeight_bold;
-    }
 }
 
 .siteNavNode-contents {
@@ -83,6 +78,11 @@ $siteNav-node_padding               : $utility-baseUnit - $siteNav-node_borderWi
 
     &:hover {
         color: $link-default_color;
+    }
+
+    &.isCurrent {
+        color: $siteNav-node_active_color;
+        font-weight: $global-fontWeight_bold;
     }
 
     &.hasChildren {

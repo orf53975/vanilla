@@ -65,9 +65,7 @@ export default class SiteNavNode extends React.Component<IProps, IState> {
             });
         return (
             <li
-                className={classNames("siteNavNode", this.props.className, depthClass, {
-                    isCurrent: this.isActiveRecord(),
-                })}
+                className={classNames("siteNavNode", this.props.className, depthClass)}
                 role="treeitem"
                 aria-expanded={this.state.open}
             >
@@ -101,6 +99,7 @@ export default class SiteNavNode extends React.Component<IProps, IState> {
                                 className={classNames("siteNavNode-link", {
                                     hasChildren,
                                     isFirstLevel: this.props.depth === 0,
+                                    isCurrent: this.isActiveRecord(),
                                 })}
                                 tabIndex={0}
                                 to={this.props.url}
