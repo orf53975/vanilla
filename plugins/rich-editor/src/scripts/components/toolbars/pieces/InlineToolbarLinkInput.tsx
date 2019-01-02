@@ -6,7 +6,7 @@
 
 import React from "react";
 import { t } from "@library/application";
-import CloseButton from "@library/components/CloseButton";
+import CloseButton from "@library/navigation/CloseButton";
 import { withEditor, IWithEditorProps } from "@rich-editor/components/context";
 
 interface IProps extends IWithEditorProps {

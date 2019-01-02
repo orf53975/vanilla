@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import className from "classnames";
-import SmartLink from "@library/components/navigation/SmartLink";
+import SmartLink from "@library/routing/links/SmartLink";
 
 interface IProps {
     className?: string;

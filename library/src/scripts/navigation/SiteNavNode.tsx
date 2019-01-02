@@ -8,7 +8,7 @@ import { INavigationTreeItem } from "@library/@types/api";
 import { t } from "@library/application";
 import Button, { ButtonBaseClass } from "@library/components/forms/Button";
 import { downTriangle, rightTriangle } from "@library/components/icons/common";
-import SmartLink from "@library/components/navigation/SmartLink";
+import SmartLink from "@library/routing/links/SmartLink";
 import TabHandler from "@library/TabHandler";
 import classNames from "classnames";
 import * as React from "react";

@@ -12,11 +12,11 @@ import { connect } from "react-redux";
 import UsersModel, { IInjectableUserState } from "@library/users/UsersModel";
 import get from "lodash/get";
 import classNames from "classnames";
-import Tabs from "@library/components/tabs/Tabs";
+import NavigationTabs from "@library/navigation/NavigationTabs";
 import Modal from "@library/components/modal/Modal";
 import ModalSizes from "@library/components/modal/ModalSizes";
 import Button, { ButtonBaseClass } from "@library/components/forms/Button";
-import CloseButton from "@library/components/CloseButton";
+import CloseButton from "@library/navigation/CloseButton";
 import UserDropdownContents from "@library/components/mebox/pieces/UserDropdownContents";
 import NotificationsToggle from "@library/components/mebox/pieces/NotificationsToggle";
 import MessagesToggle from "@library/components/mebox/pieces/MessagesToggle";
@@ -93,7 +93,7 @@ export class CompactMeBox extends React.Component<IUserDropDownProps, IState> {
                                 className="compactMeBox-closeModal"
                                 baseClass={ButtonBaseClass.CUSTOM}
                             />
-                            <Tabs
+                            <NavigationTabs
                                 label={t("My Account Tab")}
                                 className="compactMeBox-tabs inheritHeight"
                                 tabListClass="compactMeBox-tabList"

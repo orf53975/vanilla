@@ -10,7 +10,7 @@ import classNames from "classnames";
 import { LocationDescriptor } from "history";
 import DropDownItem from "./DropDownItem";
 import { ModalLink } from "@library/components/modal";
-import SmartLink from "@library/components/navigation/SmartLink";
+import SmartLink from "@library/routing/links/SmartLink";
 
 export interface IDropDownItemLink {
     to: LocationDescriptor;

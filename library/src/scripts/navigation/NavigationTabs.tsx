@@ -6,9 +6,9 @@
 
 import * as React from "react";
 import classNames from "classnames";
-import TabPanel, { ITabPanel } from "@library/components/tabs/pieces/TabPanel";
+import NavigationTabPanel, { ITabPanel } from "./pieces/NavigationTabPanel";
 import { uniqueIDFromPrefix } from "@library/componentIDs";
-import TabButtonList, { ITabButton } from "@library/components/tabs/pieces/TabButtonList";
+import NavigationTabButtonList, { ITabButton } from "./pieces/NavigationTabButtonList";
 
 export interface ITab extends ITabPanel, ITabButton {}
 
@@ -29,7 +29,7 @@ interface IState {
 /**
  * Clean up conditional renders with this component
  */
-export default class Tabs extends React.PureComponent<IProps, IState> {
+export default class NavigationTabs extends React.PureComponent<IProps, IState> {
     private id = uniqueIDFromPrefix("tabs");
     public constructor(props) {
         super(props);
@@ -42,7 +42,7 @@ export default class Tabs extends React.PureComponent<IProps, IState> {
         const { tabs, className } = this.props;
         return (
             <div className={classNames("tabs", className)}>
-                <TabButtonList
+                <NavigationTabButtonList
                     tabs={this.props.tabs}
                     selectedTab={this.state.selectedTab}
                     setTab={this.setSelectedTab}
@@ -53,7 +53,7 @@ export default class Tabs extends React.PureComponent<IProps, IState> {
                     buttonClass={this.props.buttonClass}
                     className={this.props.tabListClass}
                 />
-                <TabPanel
+                <NavigationTabPanel
                     tabs={this.props.tabs}
                     selectedTab={this.state.selectedTab}
                     getTabButtonID={this.tabButtonID}

@@ -8,7 +8,7 @@ import * as React from "react";
 import classNames from "classnames";
 import { ButtonBaseClass } from "@library/components/forms/Button";
 import TabHandler from "@library/TabHandler";
-import TabButton from "@library/components/tabs/pieces/TabButton";
+import TabButton from "./NavigationTabButton";
 
 export interface ITabButton {
     buttonContent: React.ReactNode;
@@ -33,6 +33,7 @@ interface IState {
 
 /**
  * Clean up conditional renders with this component
+ * @internal
  */
 export default class TabButtonList extends React.Component<IProps, IState> {
     private tabButtons: React.RefObject<HTMLDivElement> = React.createRef();

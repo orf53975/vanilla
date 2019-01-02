@@ -10,7 +10,7 @@ import { UserPhoto, UserPhotoSize } from "@library/components/mebox/pieces/UserP
 import { IInjectableUserState } from "@library/users/UsersModel";
 import { connect } from "react-redux";
 import UsersModel from "@library/users/UsersModel";
-import SmartLink from "@library/components/navigation/SmartLink";
+import SmartLink from "@library/routing/links/SmartLink";
 
 export interface IProps extends IInjectableUserState {
     className?: string;

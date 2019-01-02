@@ -11,7 +11,7 @@ import FrameBody from "@library/components/frame/FrameBody";
 import FramePanel from "@library/components/frame/FramePanel";
 import FrameFooter from "@library/components/frame/FrameFooter";
 import Button, { ButtonBaseClass } from "@library/components/forms/Button";
-import LinkAsButton from "@library/components/LinkAsButton";
+import LinkAsButton from "@library/routing/links/LinkAsButton";
 import Frame from "@library/components/frame/Frame";
 import { settings } from "@library/components/icons/header";
 import MeBoxDropDownItemList from "@library/components/mebox/pieces/MeBoxDropDownItemList";

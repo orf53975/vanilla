@@ -12,7 +12,7 @@ import FlexSpacer from "@library/components/FlexSpacer";
 import { t } from "@library/application";
 import Translate from "@library/components/translation/Translate";
 import DateTime from "@library/components/DateTime";
-import SmartLink from "@library/components/navigation/SmartLink";
+import SmartLink from "@library/routing/links/SmartLink";
 
 export enum MeBoxItemType {
     NOTIFICATION = "notification",

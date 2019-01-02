@@ -15,7 +15,7 @@ import { Panel } from "@library/components/layouts/PanelLayout";
 import { Frame, FrameBody, FrameFooter } from "@library/components/frame";
 import SmartAlign from "@library/components/SmartAlign";
 import Heading from "@library/components/Heading";
-import CloseButton from "@library/components/CloseButton";
+import CloseButton from "@library/navigation/CloseButton";
 import FlexSpacer from "@library/components/FlexSpacer";
 
 export interface IProps {

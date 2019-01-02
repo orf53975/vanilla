@@ -6,7 +6,7 @@
 
 import { INavigationTreeItem } from "@library/@types/api";
 import { getRequiredID } from "@library/componentIDs";
-import SiteNavNode, { IActiveRecord } from "@library/components/siteNav/SiteNavNode";
+import SiteNavNode, { IActiveRecord } from "@library/navigation/SiteNavNode";
 import TabHandler from "@library/TabHandler";
 import classNames from "classnames";
 import * as React from "react";

@@ -7,7 +7,7 @@
 import React from "react";
 import { formatUrl } from "@library/application";
 import { NavLinkProps, NavLink } from "react-router-dom";
-import { LocationDescriptor, createPath, createLocation } from "history";
+import { LocationDescriptor, createPath } from "history";
 
 export const LinkContext = React.createContext("https://changeme.dev.localhost");
 

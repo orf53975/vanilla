@@ -5,14 +5,14 @@
  */
 
 import * as React from "react";
-import DateTime from "../DateTime";
-import BreadCrumbString from "../BreadCrumbString";
+import DateTime from "@library/components/DateTime";
+import BreadCrumbString from "@library/navigation/BreadCrumbString";
 import { OptionProps } from "react-select/lib/components/Option";
-import { SelectOption } from "../forms/select/overwrites";
+import { SelectOption } from "@library/components/forms/select/overwrites";
 import classNames from "classnames";
 import { IComboBoxOption } from "@library/components/forms/select/SearchBar";
-import { ICrumb } from "@library/components/Breadcrumbs";
-import SmartLink from "@library/components/navigation/SmartLink";
+import { ICrumb } from "@library/navigation/Breadcrumbs";
+import SmartLink from "@library/routing/links/SmartLink";
 
 export interface ISearchOptionData {
     crumbs: ICrumb[];

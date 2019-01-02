@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import classNames from "classnames";
-import BackLink from "@library/components/navigation/BackLink";
+import BackLink from "@library/routing/links/BackLink";
 import Heading from "@library/components/Heading";
 
 interface IPageHeading {

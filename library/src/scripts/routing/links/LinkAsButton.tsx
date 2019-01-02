@@ -4,11 +4,11 @@
  * @license GPL-2.0-only
  */
 
-import React from "react";
+import { IOptionalComponentID } from "@library/componentIDs";
+import { ButtonBaseClass } from "@library/components/forms/Button";
+import SmartLink from "@library/routing/links/SmartLink";
 import classNames from "classnames";
-import { IOptionalComponentID } from "../componentIDs";
-import { ButtonBaseClass } from "./forms/Button";
-import SmartLink from "@library/components/navigation/SmartLink";
+import React from "react";
 import { LinkProps } from "react-router-dom";
 
 interface IProps extends IOptionalComponentID, LinkProps {

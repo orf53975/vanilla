@@ -7,7 +7,7 @@
 import * as React from "react";
 import classNames from "classnames";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import SmartLink from "@library/components/navigation/SmartLink";
+import SmartLink from "@library/routing/links/SmartLink";
 import VanillaHeaderListItem from "@library/components/mebox/pieces/VanillaHeaderListItem";
 
 export interface IHeaderNav {

@@ -6,7 +6,6 @@
 
 import * as React from "react";
 import { Optionalize } from "@library/@types/utils";
-import { AxiosInstance } from "axios";
 import { ISearchOptionData } from "@library/components/search/SearchOption";
 import { IComboBoxOption } from "@library/components/forms/select/SearchBar";
 const SearchContext = React.createContext<IWithSearchProps>({} as any);
