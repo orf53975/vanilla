@@ -6,6 +6,8 @@
  * @license GPL-2.0-only
  */
 
+import escapeRegExp from "lodash/escapeRegExp";
+
 /**
  * @type {boolean} The current debug setting.
  * @private
@@ -174,7 +176,7 @@ export function slugify(str: string): string {
 export function splitStringLoosely(toSplit: string, splitWith: string): string[] {
     const normalizedName = toSplit.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     const normalizedSplitTerm = splitWith.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    const normalizedPieces = normalizedName.split(new RegExp(`(${normalizedSplitTerm})`, "i"));
+    const normalizedPieces = normalizedName.split(new RegExp(`${escapeRegExp(normalizedSplitTerm)}$`, "i"));
 
     let charactersUsed = 0;
     return normalizedPieces.map(piece => {

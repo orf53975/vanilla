@@ -308,7 +308,7 @@ export function getMentionRange(quill: Quill, currentSelection: RangeStatic | nu
     const leafContentBeforeCursor = quill.getText(leafOffset, length);
 
     // See if the leaf's content contains an `@`.
-    const leafAtSignIndex = leafContentBeforeCursor.lastIndexOf("@");
+    const leafAtSignIndex = leafContentBeforeCursor.lastIndexOf(" @") + 1;
     if (leafAtSignIndex === -1) {
         return null;
     }
