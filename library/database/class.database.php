@@ -404,7 +404,8 @@ class Gdn_Database {
                 break;
 
             } catch (Gdn_UserException $uex) {
-                trigger_error($uex->getMessage(), E_USER_ERROR);
+                throw $uex;
+//                trigger_error($uex->getMessage(), E_USER_ERROR);
             } catch (Exception $ex) {
                 list($state, $code, $message) = $pDO->errorInfo();
 
